@@ -1,0 +1,43 @@
+{
+  "name": "CYB 游戏导航站",
+  "short_name": "CYB 导航",
+  "description": "788+ 精选游戏、编程、视频、工具网站导航，内置站内电台、小游戏与聊天室。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
+  "orientation": "any",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "categories": [
+    "games",
+    "productivity",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "cyb-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "cyb-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "cyb-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
