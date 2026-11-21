@@ -1,7 +1,7 @@
-/* CYB 游戏导航站 Service Worker · v30
+/* CYB 游戏导航站 Service Worker · v32
    作用：让 PWA 可安装 + 断网可打开 + 静态资源秒开
    注意：Service Worker 仅在 HTTPS 或 localhost 下生效，file:// 打开时浏览器会静默跳过 */
-const CACHE = 'cyb-nav-v31';
+const CACHE = 'cyb-nav-v32';
 const PRECACHE = ['./', './manifest.json', './cyb-icon-192.png', './cyb-icon-512.png'];
 
 self.addEventListener('install', e => {
