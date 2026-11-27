@@ -12918,6 +12918,104 @@ function cybDeviceKey() {
 
 const sites = [
   {
+    "name": "CrazyGames",
+    "url": "https://www.crazygames.com/",
+    "cat": ["game", "nodownload"],
+    "desc": "海量免费在线游戏",
+    "new": true
+  },
+  {
+    "name": "Poki",
+    "url": "https://poki.com/",
+    "cat": ["game", "nodownload"],
+    "desc": "精选在线小游戏",
+    "new": true
+  },
+  {
+    "name": "Miniclip",
+    "url": "https://www.miniclip.com/",
+    "cat": ["game", "nodownload"],
+    "desc": "经典在线游戏平台",
+    "new": true
+  },
+  {
+    "name": "4399小游戏",
+    "url": "https://www.4399.com/",
+    "cat": ["game", "nodownload"],
+    "desc": "中文小游戏大全",
+    "new": true
+  },
+  {
+    "name": "7k7k小游戏",
+    "url": "https://www.7k7k.com/",
+    "cat": ["game", "nodownload"],
+    "desc": "经典休闲小游戏",
+    "new": true
+  },
+  {
+    "name": "小霸王",
+    "url": "https://www.yikm.net/",
+    "cat": ["game", "nodownload"],
+    "desc": "在线玩经典红白机游戏",
+    "new": true
+  },
+  {
+    "name": "slither.io",
+    "url": "https://slither.io/",
+    "cat": ["game", "nodownload"],
+    "desc": "多人贪吃蛇对战",
+    "new": true
+  },
+  {
+    "name": "diep.io",
+    "url": "https://diep.io/",
+    "cat": ["game", "nodownload"],
+    "desc": "坦克射击对战",
+    "new": true
+  },
+  {
+    "name": "iLovePDF",
+    "url": "https://www.ilovepdf.com/",
+    "cat": "other",
+    "desc": "在线 PDF 处理工具集",
+    "new": true
+  },
+  {
+    "name": "TinyPNG",
+    "url": "https://tinypng.com/",
+    "cat": "other",
+    "desc": "图片无损压缩",
+    "new": true
+  },
+  {
+    "name": "Excalidraw",
+    "url": "https://excalidraw.com/",
+    "cat": "other",
+    "desc": "手绘风在线白板",
+    "new": true
+  },
+  {
+    "name": "remove.bg",
+    "url": "https://www.remove.bg/",
+    "cat": "other",
+    "desc": "一键去除图片背景",
+    "new": true
+  },
+  {
+    "name": "regex101",
+    "url": "https://regex101.com/",
+    "cat": "programming",
+    "desc": "正则表达式在线调试",
+    "new": true
+  },
+  {
+    "name": "Carbon",
+    "url": "https://carbon.now.sh/",
+    "cat": "programming",
+    "desc": "代码高亮截图生成",
+    "new": true
+  },
+  {
     "name": "侯老师编程网站",
     "url": "https://www.codinghou.cn/",
     "cat": "programming",
@@ -19011,8 +19109,7 @@ function renderCards(filter='all', search='', animate=false) {
     const fallbackIcon = catIcons[primaryCat];
     // favicon 三级兜底：主服务失败 -> 备用服务失败 -> 分类 emoji
     const iconHtml = favicon
-      ? `<img src="${favicon}" alt="" width="32" height="32" loading="lazy" decoding="async" referrerpolicy="no-referrer"
-           onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=${encodeURIComponent(getHostname(s.url))}&sz=64';this.onerror=function(){this.remove();this.parentElement.textContent='${fallbackIcon}'};">`
+      ? `<img class="lazy-fav" data-src="${favicon}" data-fb="https://www.google.com/s2/favicons?domain=${encodeURIComponent(getHostname(s.url))}&sz=64" data-icon="${fallbackIcon}" alt="" width="32" height="32" loading="lazy" decoding="async" referrerpolicy="no-referrer">`
       : fallbackIcon;
     const cls = animate ? `site-card cat-${primaryCat}` : `site-card no-anim cat-${primaryCat}`;
     const delay = animate ? ` style="animation-delay:${Math.min(i*0.02,0.3)}s"` : '';
@@ -19041,7 +19138,7 @@ function renderCards(filter='all', search='', animate=false) {
 var renderToken = 0;
 function renderChunked(gridEl, items, animate, sy, token) {
   gridEl.innerHTML = '';
-  var CHUNK = 120, idx = 0;
+  var CHUNK = 60, idx = 0;
   (function step() {
     if (token !== renderToken) return;
     var end = Math.min(idx + CHUNK, items.length), html = '';
@@ -21689,6 +21786,293 @@ const SUPABASE_ANON_KEY = CYB_CFG.SUPABASE_ANON_KEY || '';
     if(open)setTimeout(()=>input.focus(),100);
   });
   closeBtn.addEventListener('click',()=>{panel.classList.remove('open');btn.setAttribute('aria-expanded','false');});
+})();
+</script>
+<style>
+/* ===== 马瑞斯 AI 助手 & 性能优化样式 ===== */
+.site-card{content-visibility:auto;contain-intrinsic-size:auto 110px}
+img.lazy-fav{background:var(--card-bg);border-radius:6px}
+#mrvAI{position:fixed;right:18px;bottom:18px;z-index:99999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:inherit}
+#mrvAiBtn{width:54px;height:54px;border-radius:50%;border:1px solid var(--glass-edge);background:var(--grad);color:#fff;font-size:19px;font-weight:700;cursor:pointer;box-shadow:0 8px 24px rgba(56,189,248,.35);transition:transform .2s ease}
+#mrvAiBtn:hover{transform:scale(1.07)}
+#mrvRandBtn{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--card-bg);color:var(--text);font-size:18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25);backdrop-filter:blur(8px)}
+#mrvAiPanel{position:fixed;right:18px;bottom:84px;width:min(380px,calc(100vw - 36px));height:min(540px,calc(100dvh - 150px));background:var(--bg);border:1px solid var(--border);border-radius:16px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5);z-index:99999}
+#mrvAiPanel.open{display:flex;animation:mrvIn .18s ease}
+@keyframes mrvIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.mrv-head{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--border);background:var(--card-bg)}
+.mrv-title{font-weight:700;font-size:14px;color:var(--text);flex:1;background:var(--grad-h1);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.mrv-head button{border:none;background:transparent;color:var(--text-2);font-size:15px;cursor:pointer;padding:4px 6px;border-radius:8px}
+.mrv-head button:hover{background:var(--filter-active-bg);color:var(--text)}
+.mrv-body{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+.mrv-msg{max-width:88%;padding:9px 12px;border-radius:12px;font-size:13.5px;line-height:1.6;word-break:break-word;color:var(--text)}
+.mrv-msg.ai{background:var(--card-bg);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.mrv-msg.me{background:linear-gradient(135deg,rgba(56,189,248,.22),rgba(168,85,247,.22));border:1px solid var(--border);align-self:flex-end;border-bottom-right-radius:4px}
+.mrv-msg a{color:#38bdf8;text-decoration:none}
+.mrv-msg code{background:rgba(148,163,184,.18);padding:1px 5px;border-radius:5px;font-size:12px}
+.mrv-chips{display:flex;gap:6px;padding:0 12px 8px;flex-wrap:wrap}
+.mrv-chips span{font-size:11.5px;padding:5px 10px;border-radius:999px;border:1px solid var(--border);background:var(--card-bg);color:var(--text-2);cursor:pointer;white-space:nowrap}
+.mrv-chips span:hover{border-color:rgba(56,189,248,.45);color:var(--text)}
+.mrv-input-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--border);background:var(--card-bg)}
+#mrvAiInput{flex:1;min-width:0;padding:9px 12px;border-radius:10px;border:1px solid var(--search-border);background:var(--search-bg);color:var(--input-text);font-size:13.5px;outline:none}
+#mrvAiInput::placeholder{color:var(--input-placeholder)}
+#mrvAiSend{padding:9px 16px;border-radius:10px;border:none;background:var(--grad);color:#fff;font-size:13px;font-weight:600;cursor:pointer}
+#mrvAiSend:disabled{opacity:.55;cursor:default}
+.mrv-cfg{display:none;padding:14px;border-top:1px solid var(--border);background:var(--card-bg);gap:8px;flex-direction:column}
+.mrv-cfg.open{display:flex}
+.mrv-cfg label{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--text-2)}
+.mrv-cfg input{padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--search-bg);color:var(--input-text);font-size:12.5px;outline:none}
+.mrv-cfg button{padding:8px;border-radius:8px;border:none;background:var(--grad);color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;margin-top:2px}
+.mrv-tip{font-size:11px;color:var(--text-3);line-height:1.5;margin:0}
+.mrv-typing{display:inline-block;width:6px;height:13px;background:#38bdf8;animation:mrvBlink 1s steps(2) infinite;vertical-align:-2px}
+@keyframes mrvBlink{50%{opacity:0}}
+@media(max-width:480px){
+  #mrvAiPanel{right:8px;left:8px;width:auto;bottom:76px;height:min(72dvh,560px)}
+  #mrvAI{right:12px;bottom:12px}
+}
+</style>
+<div id="mrvAI">
+  <button id="mrvRandBtn" title="随机推荐一个网站" aria-label="随机推荐一个网站">🎲</button>
+  <button id="mrvAiBtn" title="马瑞斯 AI 助手" aria-label="打开马瑞斯 AI 助手">马</button>
+</div>
+<div id="mrvAiPanel" role="dialog" aria-label="马瑞斯 AI 助手" aria-hidden="true">
+  <div class="mrv-head">
+    <span class="mrv-title">马瑞斯 AI · 站点助手</span>
+    <button id="mrvAiCfgBtn" title="配置 API" aria-label="配置 API">⚙</button>
+    <button id="mrvAiClose" title="关闭" aria-label="关闭">✕</button>
+  </div>
+  <div class="mrv-body" id="mrvAiBody">
+    <div class="mrv-msg ai">你好，我是马瑞斯 AI。可以帮你按需求推荐本站收录的网站、找游戏、查工具。首次使用请点右上角 ⚙ 填写 API 配置（Key 仅存本机）。</div>
+  </div>
+  <div class="mrv-chips" id="mrvAiChips">
+    <span data-q="推荐3个免下载的游戏网站">推荐游戏站</span>
+    <span data-q="有哪些好用的在线工具">在线工具</span>
+    <span data-q="推荐一个学编程的网站">学编程</span>
+  </div>
+  <div class="mrv-input-row">
+    <input id="mrvAiInput" placeholder="问我：推荐适合摸鱼的小游戏…" autocomplete="off" />
+    <button id="mrvAiSend">发送</button>
+  </div>
+  <div class="mrv-cfg" id="mrvAiCfg">
+    <label>API 地址<input id="mrvCfgUrl" placeholder="https://api.openai.com/v1" /></label>
+    <label>API Key<input id="mrvCfgKey" type="password" placeholder="sk-..." /></label>
+    <label>模型<input id="mrvCfgModel" placeholder="gpt-4o-mini / qwen-vl-plus / deepseek-chat" /></label>
+    <button id="mrvCfgSave">保存配置</button>
+    <p class="mrv-tip">兼容 OpenAI 接口的服务均可（OpenAI、通义千问、DeepSeek、Ollama 等）。Key 只保存在本机浏览器 localStorage，不会上传到本站服务器。</p>
+  </div>
+</div>
+<script>
+/* ===== 马瑞斯 AI 助手 / 随机漫游 / favicon 懒加载 ===== */
+(function(){
+  var CFG_KEY='mrv-ai-cfg';
+  var cfg={url:'',key:'',model:''};
+  try{ cfg=Object.assign(cfg,JSON.parse(localStorage.getItem(CFG_KEY)||'{}')); }catch(e){}
+
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function md(t){
+    var h=esc(t);
+    h=h.replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
+    h=h.replace(/`([^`]+)`/g,'<code>$1</code>');
+    h=h.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+    h=h.replace(/(^|[\s（(])(https?:\/\/[^\s<）)]+)/g,'$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+    h=h.replace(/\n/g,'<br>');
+    return h;
+  }
+  function catOf(s){return Array.isArray(s.cat)?s.cat: [s.cat];}
+  function hostOf(u){try{return new URL(u).hostname;}catch(e){return '';}}
+
+  /* 站点检索：按语义关键词匹配站点库，取相关度最高的若干条作为 AI 上下文 */
+  function pickSites(q){
+    var terms=String(q||'').toLowerCase().split(/[\s，,、]+/).filter(Boolean);
+    var scored=sites.map(function(s){
+      var cats=catOf(s);
+      var hay=(s.name+' '+s.desc+' '+hostOf(s.url)+' '+cats.join(' ')+' '+cats.map(function(c){return catNames[c]||'';}).join(' ')).toLowerCase();
+      var sc=0;
+      terms.forEach(function(t){ if(t.length>0&&hay.indexOf(t)>-1) sc+=2; });
+      cats.forEach(function(c){ if(terms.indexOf(c)>-1) sc+=3; });
+      return {s:s,sc:sc};
+    }).sort(function(a,b){return b.sc-a.sc;});
+    var hit=scored.filter(function(x){return x.sc>0;}).slice(0,20).map(function(x){return x.s;});
+    if(!hit.length){
+      var pool=sites.slice();
+      for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
+      hit=pool.slice(0,20);
+    }
+    return hit;
+  }
+  function sysPrompt(list){
+    var lines=list.map(function(s){
+      return '- '+s.name+' | '+catOf(s).map(function(c){return catNames[c]||c;}).join('/')+' | '+s.url+' | '+(s.desc||'');
+    }).join('\n');
+    return '你是"马瑞斯 AI"，CYB 游戏导航站内置的智能助手。请用简体中文简洁作答（不超过 200 字），语气务实。\n'
+      +'当用户想找网站时，优先从下面候选站点中选择推荐，并用 Markdown 链接格式 [站点名](链接) 给出，便于点击。\n'
+      +'候选站点（名称 | 分类 | 链接 | 简介）：\n'+lines+'\n'
+      +'如果候选里没有合适的，可以推荐你知道的其他知名网站，但要说明不在本站收录内。';
+  }
+
+  var panel=document.getElementById('mrvAiPanel');
+  var body=document.getElementById('mrvAiBody');
+  var input=document.getElementById('mrvAiInput');
+  var sendBtn=document.getElementById('mrvAiSend');
+  var cfgBox=document.getElementById('mrvAiCfg');
+  var busy=false;
+
+  function scrollBottom(){ body.scrollTop=body.scrollHeight; }
+  function addMsg(cls,html){
+    var el=document.createElement('div');
+    el.className='mrv-msg '+cls;
+    el.innerHTML=html;
+    body.appendChild(el);
+    scrollBottom();
+    return el;
+  }
+
+  function saveCfg(){
+    cfg.url=(document.getElementById('mrvCfgUrl').value||'').trim();
+    cfg.key=(document.getElementById('mrvCfgKey').value||'').trim();
+    cfg.model=(document.getElementById('mrvCfgModel').value||'').trim();
+    try{ localStorage.setItem(CFG_KEY,JSON.stringify(cfg)); }catch(e){}
+    cfgBox.classList.remove('open');
+    addMsg('ai','配置已保存（仅存本机）。现在可以直接提问了。');
+  }
+
+  async function ask(text){
+    if(busy) return;
+    if(!cfg.url||!cfg.key){
+      cfgBox.classList.add('open');
+      addMsg('ai','请先填写 API 地址和 Key（已为你打开配置面板）。');
+      return;
+    }
+    busy=true; sendBtn.disabled=true;
+    addMsg('me',esc(text));
+    var aiEl=addMsg('ai','<span class="mrv-typing"></span>');
+    var list=pickSites(text);
+    var msgs=[{role:'system',content:sysPrompt(list)},{role:'user',content:text}];
+    var acc='';
+    try{
+      var resp=await fetch(cfg.url.replace(/\/+$/,'')+'/chat/completions',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':'Bearer '+cfg.key},
+        body:JSON.stringify({model:cfg.model||'gpt-4o-mini',messages:msgs,stream:true,temperature:0.7})
+      });
+      if(!resp.ok){
+        var errTxt=(await resp.text()).slice(0,160);
+        throw new Error('HTTP '+resp.status+' '+errTxt);
+      }
+      var ct=resp.headers.get('content-type')||'';
+      if(ct.indexOf('application/json')>-1){
+        var j=await resp.json();
+        acc=(j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content)||'';
+        aiEl.innerHTML=md(acc)||'（无返回内容）';
+      }else{
+        var reader=resp.body.getReader(),dec=new TextDecoder(),buf='';
+        while(true){
+          var r=await reader.read();
+          if(r.done) break;
+          buf+=dec.decode(r.value,{stream:true});
+          var parts=buf.split('\n');
+          buf=parts.pop();
+          for(var k=0;k<parts.length;k++){
+            var line=parts[k].trim();
+            if(line.indexOf('data:')!==0) continue;
+            var d=line.slice(5).trim();
+            if(!d||d==='[DONE]') continue;
+            try{
+              var jj=JSON.parse(d);
+              var t=jj.choices&&jj.choices[0]&&jj.choices[0].delta&&jj.choices[0].delta.content;
+              if(t){ acc+=t; aiEl.innerHTML=md(acc); scrollBottom(); }
+            }catch(e2){}
+          }
+        }
+        if(!acc) aiEl.innerHTML='（无返回内容，请检查模型名或接口）';
+      }
+    }catch(e){
+      aiEl.innerHTML='<span style="color:#f87171">请求失败：'+esc(e.message||e)+'</span>';
+    }finally{
+      busy=false; sendBtn.disabled=false;
+    }
+  }
+
+  document.getElementById('mrvAiBtn').addEventListener('click',function(){
+    var open=panel.classList.toggle('open');
+    panel.setAttribute('aria-hidden',String(!open));
+    if(open) setTimeout(function(){ input.focus(); },120);
+  });
+  document.getElementById('mrvAiClose').addEventListener('click',function(){
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+  });
+  document.getElementById('mrvAiCfgBtn').addEventListener('click',function(){
+    document.getElementById('mrvCfgUrl').value=cfg.url||'https://api.openai.com/v1';
+    document.getElementById('mrvCfgKey').value=cfg.key||'';
+    document.getElementById('mrvCfgModel').value=cfg.model||'gpt-4o-mini';
+    cfgBox.classList.toggle('open');
+  });
+  document.getElementById('mrvCfgSave').addEventListener('click',saveCfg);
+  sendBtn.addEventListener('click',function(){
+    var t=input.value.trim();
+    if(!t) return;
+    input.value='';
+    ask(t);
+  });
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendBtn.click(); }
+  });
+  document.getElementById('mrvAiChips').addEventListener('click',function(e){
+    var q=e.target&&e.target.getAttribute&&e.target.getAttribute('data-q');
+    if(q) ask(q);
+  });
+
+  /* 随机漫游：随机打开一个收录站点 */
+  document.getElementById('mrvRandBtn').addEventListener('click',function(){
+    var s=sites[Math.floor(Math.random()*sites.length)];
+    if(s) window.open(s.url,'_blank','noopener');
+  });
+
+  /* favicon 懒加载：仅当卡片进入视口才加载图标，显著减少外部请求 */
+  var favIO=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){ loadFav(en.target); favIO.unobserve(en.target); }
+    });
+  },{rootMargin:'280px'}):null;
+
+  function loadFav(img){
+    var src=img.getAttribute('data-src');
+    if(!src) return;
+    img.onerror=function(){
+      if(img.getAttribute('data-fb-tried')!=='1'&&img.getAttribute('data-fb')){
+        img.setAttribute('data-fb-tried','1');
+        img.src=img.getAttribute('data-fb');
+      }else{
+        img.onerror=null;
+        var p=img.parentElement;
+        img.parentNode&&img.parentNode.removeChild(img);
+        if(p) p.textContent=img.getAttribute('data-icon')||'🔗';
+      }
+    };
+    img.src=src;
+    img.removeAttribute('data-src');
+  }
+  function scanFavs(root){
+    var imgs=(root||document).querySelectorAll('img.lazy-fav[data-src]');
+    for(var i=0;i<imgs.length;i++){
+      if(favIO) favIO.observe(imgs[i]); else loadFav(imgs[i]);
+    }
+  }
+  scanFavs();
+  var gridEl=document.getElementById('cardsGrid');
+  if(gridEl&&'MutationObserver' in window){
+    new MutationObserver(function(ms){
+      ms.forEach(function(m){
+        if(!m.addedNodes) return;
+        for(var i=0;i<m.addedNodes.length;i++){
+          var n=m.addedNodes[i];
+          if(n.nodeType!==1) continue;
+          if(n.tagName==='IMG'&&n.classList&&n.classList.contains('lazy-fav')){ favIO?favIO.observe(n):loadFav(n); }
+          else if(n.querySelectorAll){ scanFavs(n); }
+        }
+      });
+    }).observe(gridEl,{childList:true,subtree:true});
+  }
 })();
 </script>
 </body></html>
