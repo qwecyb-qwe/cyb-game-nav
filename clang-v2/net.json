@@ -1,6 +1,6 @@
 {
   "ws": "wss://colleague-devoted-direct-warehouse.trycloudflare.com",
-  "note": "临时中继（云主机隧道，可能随时下线）",
-  "updated": "2026-11-28T17:50:00+08:00",
+  "note": "云主机隧道节点，临时可用、可能随时下线",
+  "updated": "2026-11-28T17:58:00+08:00",
   "rooms": 8
 }
