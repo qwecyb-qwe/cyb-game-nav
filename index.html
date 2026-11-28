@@ -19399,8 +19399,14 @@ function renderCards(filter='all', search='', animate=false) {
     const terms = q.split(/\s+/).filter(Boolean);
     const baseHay = (s.name + ' ' + s.desc + ' ' + cats.map(c=>catNames[c]).join(' ')).toLowerCase();
     const hostHay = getHostname(s.url).toLowerCase();
-    // 1~2 字符的短词只在名称/描述/分类里匹配，避免 "ai" 误中 baidu / sspai 等域名
-    const matchSearch = !terms.length || terms.every(t => baseHay.includes(t) || (t.length >= 3 && hostHay.includes(t)));
+    // 1~2 字符的短词按词边界匹配名称/描述/分类，避免 "ai" 误中 baidu / brainly / tailwind 等子串
+    const matchSearch = !terms.length || terms.every(t => {
+      if (t.length <= 2) {
+        const re = new RegExp('(^|[^a-z0-9])' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^a-z0-9]|$)');
+        return re.test(baseHay);
+      }
+      return baseHay.includes(t) || hostHay.includes(t);
+    });
     return matchCat && matchSearch;
   });
   document.getElementById('count').textContent = sites.length;
