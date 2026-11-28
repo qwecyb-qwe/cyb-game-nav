@@ -26,34 +26,55 @@
 
 ---
 
-## 3. 联机怎么接
+## 3. 联机怎么用
 
-1. 部署页模式选 **联机 ONLINE (WS)**，填 `wss://你的地址` 和房间号。
-2. 起中继：
+### 一键联机（已配置官方中继）
+
+1. 主菜单 → 出击 → 模式选 **联机 ONLINE (WS)**，房间号随便填（如 `SCRAP-01`）
+2. 中继地址留空即可，游戏会自动读取同目录 `net.json` 里的 `ws` 地址
+3. 点 **开始试炼**，HUD 顶部出现绿点「联机 · N 名同伴」
+4. 把「邀请链接」发给同伴：点开即自动填好房间和中继，再点开始就在同一局里
+
+链接形如：
+`https://qwecyb-qwe.github.io/cyb-game-nav/clang-v2/?room=SCRAP-01&relay=wss%3A%2F%2F...`
+
+> 当前 `net.json` 指向的是**临时中继**（云主机 + Cloudflare 隧道），云主机关机就会失效。失效时游戏会提示「连接失败 · 重试中」，最多重连 4 次后退回单机，不会卡住。
+
+### 换成你自己的中继（三选一）
+
+**A. 最省事：Cloudflare Worker（免费额度够用）**
 
 ```bash
-npm i ws
-node relay-server.js          # 默认 :8080，可用 PORT=8081 改
-# 自检：curl http://127.0.0.1:8080/health
+npm i -g wrangler && wrangler login
+wrangler deploy relay-worker.js          # 仓库里 clang-v2/relay-worker.js
+# 得到 https://clang-relay.xxx.workers.dev
 ```
 
-3. 协议（文本帧 JSON，服务端只做房间内转发 + 发 `peers` 名单）：
+游戏里填 `wss://clang-relay.xxx.workers.dev/ws?room=SCRAP-01`，或把 `net.json` 的 `ws` 改成它。
+
+**B. 自己一台 VPS / 家里电脑：**
+
+```bash
+npm i ws && node relay-server.js        # 默认 :8080
+# 公网访问请加 TLS（nginx 反代 / caddy），再用 wss://
+```
+
+**C. 不用服务端：同一台机器多标签页**
+
+模式选 `LOCAL`，用 BroadcastChannel，开两个标签页就能对着打，适合调试。
+
+### 协议
 
 ```
-{t:"join",room,sid,name}
+{t:"join",room,sid}                  // 进场，服务端回 peers 名单
 {t:"st",  room,sid,x,y,z,ry,g}       // 12Hz 位置/朝向/当前枪
 {t:"shot",room,sid,ox,oy,oz,dx,dy,dz,g}
 {t:"kill",room,sid,k}
 {t:"wave",room,sid,wave}
-{t:"chat",room,sid,msg}
 {t:"bye", room,sid}
 ```
 
-**同机多标签**还能用 `LOCAL`（BroadcastChannel）模式，不需要任何服务端，方便调试。
-
-之后你把后端给我时，最省事的接法是：把 `relay-server.js` 换成权威服务端（服务端算波次/伤害/命中），前端只发输入、只收快照；协议字段不用动，改 `netSend / netHandle` 两处即可。
-
----
+服务端只做房间内转发 + 名单。**目前是客户端各自刷怪、共享房间**：你能看到同伴的位置、枪口火线、进出房间，但敌人不是同一批（还没做主机权威）。等你把后端给我，把这层换成「服务端算波次和命中、客户端只发输入收快照」，协议字段不用动，改 `netSend / netHandle` 两处即可。
 
 ## 4. 内容规模
 
